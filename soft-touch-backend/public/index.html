@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Touch Hair Salon</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+    rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/8a443aadcb.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            emailjs.init('Vzaj01Rejbgvn-ge7');
+
+            const form = document.getElementById('bookingForm');
+            const statusMessage = document.getElementById('statusMessage');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    service: formData.get('service'),
+                    date_time: formData.get('date_time'),
+                    message: formData.get('message'),
+                    reply_to: 'wainoidaya39@gmail.com',
+                    cc: '',
+                    bcc: ''
+                };
+
+                emailjs.send('service_g92oxqx', 'template_9t55u7o', data)
+                    .then(response => {
+                        return emailjs.send('service_g92oxqx', 'template_q9j1a74', data);
+                    })
+                    .then(response => {
+                        statusMessage.textContent = 'Booking confirmed! An email has been sent.';
+                        form.reset();
+                    })
+                    .catch(error => {
+                        console.error('Error sending email:', error);
+                        statusMessage.textContent = 'An error occurred. Please try again.';
+                    });
+            });
+
+            const toggleButton = document.querySelector('.toggle-button');
+            const navbarLinks = document.querySelector('.navbar-links');
+
+            toggleButton.addEventListener('click', () => {
+                navbarLinks.classList.toggle('active');
+            });
+        });
+    </script>
+</head>
+<body>
+        <header class="header">
+            <a href="#home" class="logo">SOFT TOUCH</a>
+            
+            <input type="checkbox" id="check">
+            <label for="check" class="icons">
+                <i class='bx bx-menu-alt-right' id="menu-icon" ></i>
+                <i class='bx bx-x'  id="close-icon"></i>
+            </label>
+
+            <nav class="navbar">
+                <a href="#home" style="--i:0;"><b>Home</b></a>
+                <a href="#about" style="--i:1;"><b>About</b></a>
+                <a href="#services" style="--i:2;"><b>Our Services</b></a>
+                <a href="#gallery" style="--i:3;"><b>Gallery</b></a>
+                <a href="#contact" style="--i:4;"><b>Contact Us</b></a>
+            </nav>
+        </header>
+
+    <section id="home" class="home">
+        <div class="header-content">
+                <h1><b>Welcome to Soft Touch Hair Salon</b></h1>
+                <p><b>Your satisfaction is our priority</b></p>
+                <a href="#contact" class="btn">Book Now</a>
+            </div>
+    </section>
+
+    <section id="about" class="hero">
+        <div class="heading">
+            <h2>About Us</h2>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Soft Touch Hair Salon</h1>
+                <p>Welcome to Soft Touch Hair Salon! We are dedicated to providing the highest quality hairdressing services to our valued customers. Our team of skilled stylists is passionate about helping you look and feel your best.
+                     At Soft Touch, we offer a wide range of services, from designs and styling to coloring and treatments. Our salon is a place where <b>creativity meets professionalism</b>, and we are committed to delivering an exceptional 
+                     experience for each and every client. Thank you for choosing Soft Touch Hair Salon – your satisfaction is our priority.</p>
+                    
+                    </div>
+            <div class="hero-image">
+                <img src="images/aboutus.jpg" alt="" class="">
+            </div>
+        </div>
+    </section>
+
+    <section id="filters">
+        <h2><b>Our Services</b></h2>
+        <p class="services-description">Explore our diverse range of hairdressing services. Whether you need a simple trim, a complete makeover, or specialized treatments, our experienced stylists are here to cater to all your hair care needs. We use high-quality products to ensure the best results for our clients.</p>
+
+        <div class="container">
+            <button class="filter-btn" data-filter="all">All</btton>
+            <button class="filter-btn" data-filter="twist">Twist-Hair</button>
+            <button class="filter-btn" data-filter="braids">Braids</button>
+            <button class="filter-btn" data-filter="locs">Locs</button>
+            <button class="filter-btn" data-filter="cornrows">Cornrows</button>
+        </div>
+    </section>
+    
+    <section id="services">
+        <div class="container">
+            <div class="service-slider">
+                <div class="service-item" data-category="twist">
+                    <img src="https://i.ibb.co/nQJfm47/service2.jpg" alt="Two Stand Twist Hair Extension">
+                    <div class="service-info">
+                        <h3>Two Strand Twist Hair Extension</h3>
+                        <p>Price: $110</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="twist">
+                    <img src="https://i.ibb.co/nQJfm47/service2.jpg" alt="Two Stand Twist Hair">
+                    <div class="service-info">
+                        <h3>Two Strand Twist Hair</h3>
+                        <p>Price: $90</p>
+                        
+                    </div>  
+                </div>
+                <div class="service-item" data-category="braids">
+                    <img src="https://i.ibb.co/SrG6WWb/service4.jpg
+                    " alt="Service 3">
+                    <div class="service-info">
+                        <h3>Boho Braids</h3>
+                        <p>Price: $150</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="locs">
+                    <img src="https://i.ibb.co/jgGdwWZ/service3.jpg
+                    " alt="Service 4">
+                    <div class="service-info">
+                        <h3>Two Strand Twist Locs</h3>
+                        <p>Price: $130</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="braids">
+                    <img src="https://i.ibb.co/b1BG0Bp/gallery1.jpg" alt="Service 4">
+                    <div class="service-info">
+                        <h3>Box Braids</h3>
+                        <p>Prices: Big: $110<br> Medium: $140<br> Small: $180</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="cornrows">
+                    <img src="https://i.ibb.co/xq9H3dj/gallery2.jpg" alt="Service 4">
+                    <div class="service-info">
+                        <h3>Designed Cornrows</h3>
+                        <p>Starting Price: $60</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="locs">
+                    <img src="https://i.ibb.co/DbF7hvy/gallery3.jpg" alt="Service 4">
+                    <div class="service-info">
+                        <h3>Interlocking</h3>
+                        <p>Price: $115</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="twist">
+                    <img src="https://i.ibb.co/0MMdKcs/gallery4.jpg" alt="Service 4">
+                    <div class="service-info">
+                        <h3>Island Boho Twist</h3>
+                        <p>Starting Price: $160</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="braids">
+                    <img src="https://i.ibb.co/9q1fXhk/gallery5.jpg
+                    " alt="Service 4">
+                    <div class="service-info">
+                        <h3>Knockle Braids Big</h3>
+                        <p>Price: $140</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="twist">
+                    <img src="https://i.ibb.co/4SdRn3G/gallery6.jpg" alt="Service 4">
+                    <div class="service-info">
+                        <h3>Locs Re-Twist</h3>
+                        <p>Price: $100</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="braids">
+                    <img src="https://i.ibb.co/rtLqn3M/gallery7.jpg" alt="Service 4">
+                    <div class="service-info">
+                        <h3>Knockle Braids Medium</h3>
+                        <p>Price: $170</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="twist">
+                    <img src="https://i.ibb.co/VQBSP7r/gallery8.jpg
+                    " alt="Service 4">
+                    <div class="service-info">
+                        <h3>Passion-Twist</h3>
+                        <p>Starting Price: $150</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="cornrows">
+                    <img src="https://i.ibb.co/6DCzRgR/gallery9.jpg" alt="Service 4">
+                    <div class="service-info">
+                        <h3>Simple-cornrows</h3>
+                        <p>Starting Price: $40</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="locs">
+                    <img src="https://i.ibb.co/LSbTt9L/gallery10.jpg" alt="Service 4">
+                    <div class="service-info">
+                        <h3>Sister-Locs</h3>
+                        <p>Price: $240</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="twist">
+                    <img src="https://i.ibb.co/5WQ2n07/gallery13.jpg
+                    " alt="Service 4">
+                    <div class="service-info">
+                        <h3>Twist</h3>
+                        <p>Starting Price: $60</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="braids">
+                    <img src="https://i.ibb.co/dKKcQkN/gallery11.jpg" alt="Service 4">
+                    <div class="service-info">
+                        <h3>Knockle Braids Small</h3>
+                        <p>Price: $200</p>
+                        
+                    </div>
+                </div>
+                <div class="service-item" data-category="locs">
+                    <img src="https://i.ibb.co/tL4qNKH/gallery12.jpg" alt="Service 4">
+                    <div class="service-info">
+                        <h3>Starter Locs</h3>
+                        <p>Price: $100</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2><b>Gallery</b></h2>
+        <p class="gallery-description">Explore our diverse collection of hairstyles and see the exceptional work of our talented stylists. 
+            Click on any image to view it in full size.</p>
+        <div class="container">
+            <div class="gallery-wrap">
+                <img src="images/back.png" id="backBtn">
+                <div class="gallery">
+                    <div>
+                        <span><img src="https://i.ibb.co/0MMdKcs/gallery1.jpg" alt="Gallery Image 1"></span>
+                        <span><img src="https://i.ibb.co/4SdRn3G/gallery2.jpg" alt="Gallery Image 2"></span>
+                        <span><img src="https://i.ibb.co/b1BG0Bp/gallery4.jpg" alt="Gallery Image 4"></span>
+                       <span><img src="https://i.ibb.co/SrG6WWb/gallery5.jpg" alt="Gallery Image 5"></span>
+                       <span><img src="https://i.ibb.co/k88BV3d/starter-locs100.jpg" alt="starter-locs100"></span>
+                       <span><img src="https://i.ibb.co/gRBp3Cr/sisterlocs-240.jpg" alt="sisterlocs-240"></span>
+                   </div>
+                   <div>
+                       <img src="https://i.ibb.co/rQC0jmp/simple-cornrows.jpg" alt="simple-cornrows">
+                       <img src="https://i.ibb.co/4gN8WBt/Medium-170.jpg" alt="Medium-170">
+                       <span><img src="https://i.ibb.co/2FNB7B0/passion-twist-from-150.jpg" alt="passion-twist-from-150"></span>
+                   </div>
+                   <div>
+                       <span><img src="https://i.ibb.co/8rSfrP1/knockle-braids-Big-140.jpg" alt="knockle-braids-Big-140"></span>
+                       <span><img src="https://i.ibb.co/JF61TQq/2standtwistslocs.jpg" alt="2standtwistslocs"></span>
+                       <span><img src="https://i.ibb.co/whTfrdd/twist-from-60.jpg" alt="twist-from-60"></span>
+                       <span><img src="https://i.ibb.co/8x8Vhsx/Interlocking-115.jpg" alt="Interlocking-115"></span>
+                   </div>
+                    <div>
+                        <span><img src="https://i.ibb.co/jrZ1Mph/2standtwist-hair-90.jpg" alt="2standtwist-hair-90"></span>
+                        <span><img src="https://i.ibb.co/3TqwCNV/Comrows-with-design-from65.jpg" alt="Comrows-with-design-from65"></span>
+                        <span><img src="https://i.ibb.co/hB1JY2V/small-200.jpg" alt="small-200"></span>
+                        <span><img src="https://i.ibb.co/80mcMsG/long-fulani.jpg" alt="long-fulani" border="0"></span>
+                        <span><img src="https://i.ibb.co/4dby2T7/short-fulani.jpg" alt="short-fulani"></span>
+                        
+                    </div>
+                </div>
+                <img src="images/next.png" id="nextBtn">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact">
+            <div class="content">
+                <b><h2>Contact Us</b></h2>
+                <p><b>Have questions or want to book an appointment? Get in touch with us! We are here to assist you with all your hair care needs. Fill out the form below or reach us through our contact details.</b></p>
+            </div>
+            <div class="container">
+                <div class="contactInfo">
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="text">
+                            <h3><B>Address</B></h3>
+                            <p><b>1551 Kingston Rd, Scarborough, ON M1N1R9</b></p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="text">
+                            <h3><b>Email</b></h3>
+                            <p><b>idayawaino228@gmail.com</b></p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                        <div class="text">
+                            <h3><b>Open & Close Hours</b></h3>
+                            <p><b>Monday/ Sunday: 9:00am - 8:00pm</b></p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="text">
+                            <h3><b>Phone</b></h3>
+                            <p><b>+1 (437) 603-7728</b></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contactForm">
+                    <form id="bookingForm">
+                        <h2>Message Us</h2>
+                        <div class="inputBox">
+                          <input type="text" name="name" required="required">
+                            <span>Full Name</span>
+                        </div>
+                        <div class="inputBox">
+                            <input type="text" name="email" required="required">
+                            <span>Email</span>
+                        </div>
+                        <div class="inputBox">
+                            <select name="service" required="required">
+                                <option value="" disabled selected></option>
+                                <option value="Braids">Braids</option>
+                                <option value="Twist-Hair">Twist-Hair</option>
+                                <option value="Cornrows">Cornrows</option>
+                                <option value="Locs">Locs</option>
+                            </select>
+                            <span>Select Service</span>
+                        </div>
+                        <div class="inputBox">
+                            <input type="datetime-local" name="date_time" required="required">
+                            
+                        </div>
+                        <div class="inputBox">
+                            <textarea name="message" required="required"></textarea>
+                            <span>Describe the style of your choice.....</span>
+                        </div>
+                        <div class="inputBox">
+                            <input type="submit" name="" value="Book Now">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <p id="statusMessage"></p>
+         </div>
+    </section>
+
+    <script>
+        let scrollContainer = document.querySelector(".gallery");
+        let backBtn = document.getElementById("backBtn")
+        let nextBtn = document.getElementById("nextBtn")
+
+        scrollContainer.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            scrollContainer.scrollLeft += evt.deltaY;
+            scrollContainer.style.scrollBehavior = "auto";
+        });
+
+
+        nextBtn.addEventListener("click", ()=> {
+            scrollContainer.style.scrollBehavior = "smooth";
+            scrollContainer.scrollLeft += 250;
+        });
+        backBtn.addEventListener("click", ()=> {
+            scrollContainer.style.scrollBehavior = "smooth";
+            scrollContainer.scrollLeft -= 250;
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const serviceItems = document.querySelectorAll('.service-item');
+        
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-filter');
+        
+                    serviceItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const navbarLinks = document.querySelectorAll('.navbar a');
+
+    navbarLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+
+    </script>        
+</body>
+</html>
